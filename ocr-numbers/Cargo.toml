@@ -1,0 +1,8 @@
+[package]
+edition = "2018"
+name = "ocr-numbers"
+version = "0.0.0"
+
+[dependencies]
+itertools = "0.8.2"
+lazy_static = "1.4.0"

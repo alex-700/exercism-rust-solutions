@@ -1,0 +1,8 @@
+[package]
+edition = "2018"
+name = "crypto-square"
+version = "0.1.0"
+
+[dependencies]
+num-integer = "0.1.42"
+itertools = "0.8.2"
