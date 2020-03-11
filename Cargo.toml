@@ -49,7 +49,7 @@ members = [
     "pascals-triangle/",
     "perfect-numbers/",
     "phone-number/",
-    "pig-latin/",
+#    "pig-latin/",
     "prime-factors/",
     "protein-translation/",
     "proverb/",

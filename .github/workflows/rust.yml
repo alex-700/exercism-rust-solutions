@@ -34,7 +34,7 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --all -- --ignored
+          args: --release --all -- --ignored
 
   fmt:
     name: Rustfmt
