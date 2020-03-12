@@ -26,67 +26,56 @@ fn no_rows() {
 }
 
 #[test]
-#[ignore]
 fn no_columns() {
     run_test(&[""]);
 }
 
 #[test]
-#[ignore]
 fn no_mines() {
     run_test(&["   ", "   ", "   "]);
 }
 
 #[test]
-#[ignore]
 fn board_with_only_mines() {
     run_test(&["***", "***", "***"]);
 }
 
 #[test]
-#[ignore]
 fn mine_surrounded_by_spaces() {
     run_test(&["111", "1*1", "111"]);
 }
 
 #[test]
-#[ignore]
 fn space_surrounded_by_mines() {
     run_test(&["***", "*8*", "***"]);
 }
 
 #[test]
-#[ignore]
 fn horizontal_line() {
     run_test(&["1*2*1"]);
 }
 
 #[test]
-#[ignore]
 fn horizontal_line_mines_at_edges() {
     run_test(&["*1 1*"]);
 }
 
 #[test]
-#[ignore]
 fn vertical_line() {
     run_test(&["1", "*", "2", "*", "1"]);
 }
 
 #[test]
-#[ignore]
 fn vertical_line_mines_at_edges() {
     run_test(&["*", "1", " ", "1", "*"]);
 }
 
 #[test]
-#[ignore]
 fn cross() {
     run_test(&[" 2*2 ", "25*52", "*****", "25*52", " 2*2 "]);
 }
 
 #[test]
-#[ignore]
 fn large_board() {
     run_test(&["1*22*1", "12*322", " 123*2", "112*4*", "1*22*2", "111111"]);
 }
