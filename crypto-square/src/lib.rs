@@ -10,8 +10,12 @@ fn normalize(input: &str) -> String {
 }
 
 fn size_of_rectangle(n: usize) -> (usize, usize) {
-    let r = n.sqrt();
-    (r, (n + r - 1) / r)
+    if n == 0 {
+        (0, 0)
+    } else {
+        let r = n.sqrt();
+        (r, (n + r - 1) / r)
+    }
 }
 
 pub fn encrypt(input: &str) -> String {
