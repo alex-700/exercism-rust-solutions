@@ -18,40 +18,40 @@ fn you_can_validate_from_a_string() {
 
 #[test]
 fn you_can_validate_from_a_u8() {
-    let valid = Luhn::from(240u8);
-    let invalid = Luhn::from(241u8);
+    let valid = Luhn::from(240_u8);
+    let invalid = Luhn::from(241_u8);
     assert!(valid.is_valid());
     assert!(!invalid.is_valid());
 }
 
 #[test]
 fn you_can_validate_from_a_u16() {
-    let valid = Luhn::from(64_436u16);
-    let invalid = Luhn::from(64_437u16);
+    let valid = Luhn::from(64_436_u16);
+    let invalid = Luhn::from(64_437_u16);
     assert!(valid.is_valid());
     assert!(!invalid.is_valid());
 }
 
 #[test]
 fn you_can_validate_from_a_u32() {
-    let valid = Luhn::from(46_454_286u32);
-    let invalid = Luhn::from(46_454_287u32);
+    let valid = Luhn::from(46_454_286_u32);
+    let invalid = Luhn::from(46_454_287_u32);
     assert!(valid.is_valid());
     assert!(!invalid.is_valid());
 }
 
 #[test]
 fn you_can_validate_from_a_u64() {
-    let valid = Luhn::from(8273_1232_7352_0562u64);
-    let invalid = Luhn::from(8273_1232_7352_0569u64);
+    let valid = Luhn::from(8273_1232_7352_0562_u64);
+    let invalid = Luhn::from(8273_1232_7352_0569_u64);
     assert!(valid.is_valid());
     assert!(!invalid.is_valid());
 }
 
 #[test]
 fn you_can_validate_from_a_usize() {
-    let valid = Luhn::from(8273_1232_7352_0562usize);
-    let invalid = Luhn::from(8273_1232_7352_0569usize);
+    let valid = Luhn::from(8273_1232_7352_0562_usize);
+    let invalid = Luhn::from(8273_1232_7352_0569_usize);
     assert!(valid.is_valid());
     assert!(!invalid.is_valid());
 }

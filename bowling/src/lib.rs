@@ -1,6 +1,6 @@
 use crate::BowlingRound::{Open, Spare, Strike};
 use crate::Error::{GameComplete, NotEnoughPinsLeft};
-use std::cmp::Ordering::*;
+use std::cmp::Ordering::{Equal, Greater, Less};
 
 #[derive(Debug, PartialEq)]
 pub enum Error {
@@ -24,7 +24,7 @@ pub struct BowlingGame {
 
 impl BowlingGame {
     pub fn new() -> Self {
-        BowlingGame {
+        Self {
             rounds: Vec::with_capacity(10),
             ..Default::default()
         }
@@ -65,28 +65,21 @@ impl BowlingGame {
                 } else {
                     self.cur = Some(pins);
                 }
-                Ok(())
             }
             Some(x) => match x.checked_add(pins).map(|x| x.cmp(&10)) {
-                None | Some(Greater) => Err(NotEnoughPinsLeft),
-                Some(Equal) => {
-                    self.rounds.push(Spare(x));
-                    Ok(())
-                }
-                Some(Less) => {
-                    self.rounds.push(Open(x, pins));
-                    Ok(())
-                }
+                None | Some(Greater) => return Err(NotEnoughPinsLeft),
+                Some(Equal) => self.rounds.push(Spare(x)),
+                Some(Less) => self.rounds.push(Open(x, pins)),
             },
         }
+        Ok(())
     }
 
     pub fn score(&self) -> Option<u16> {
         if self.finished() {
             let get_one = |i, second_in_strike: bool| match self.rounds.get(i).cloned() {
                 Some(Strike) => 10,
-                Some(Spare(x)) => x,
-                Some(Open(x, _)) => x,
+                Some(Spare(x)) | Some(Open(x, _)) => x,
                 None => {
                     if second_in_strike {
                         self.extra.0.unwrap_or(0)
@@ -106,14 +99,15 @@ impl BowlingGame {
                     .iter()
                     .enumerate()
                     .map(|(i, &x)| {
-                        (match x {
+                        u16::from(match x {
                             Strike => 10 + get_two(i + 1),
                             Spare(_) => 10 + get_one(i + 1, false),
                             Open(a, b) => a + b,
-                        }) as u16
+                        })
                     })
-                    .sum::<u16>()
-                    + (self.extra.0.unwrap_or(0) + self.extra.1.unwrap_or(0)) as u16,
+                    .chain(self.extra.0.map(u16::from))
+                    .chain(self.extra.1.map(u16::from))
+                    .sum(),
             )
         } else {
             None

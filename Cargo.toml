@@ -37,6 +37,7 @@ members = [
     "luhn/",
     "luhn-from/",
     "luhn-trait/",
+    "macros/",
     "matching-brackets/",
     "minesweeper/",
     "nth-prime/",

@@ -12,7 +12,7 @@ fn apply(s: &str, f: impl Fn(i32) -> i32) -> String {
         .filter(|c| !c.is_ascii_whitespace() && !c.is_ascii_punctuation())
         .map(|c| {
             if c.is_ascii_alphabetic() {
-                let x = (c.to_ascii_lowercase() as u8 - b'a') as i32;
+                let x = i32::from(c.to_ascii_lowercase() as u8 - b'a');
                 ((f(x) % ALPHABET_SIZE) as u8 + b'a') as char
             } else {
                 c

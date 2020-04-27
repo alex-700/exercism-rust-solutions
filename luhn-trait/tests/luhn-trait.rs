@@ -14,38 +14,38 @@ fn you_can_validate_from_a_string() {
 
 #[test]
 fn you_can_validate_from_a_u8() {
-    assert!(240u8.valid_luhn());
-    assert!(!241u8.valid_luhn());
+    assert!(240_u8.valid_luhn());
+    assert!(!241_u8.valid_luhn());
 }
 
 #[test]
 fn you_can_validate_from_a_u16() {
-    let valid = 64_436u16;
-    let invalid = 64_437u16;
+    let valid = 64_436_u16;
+    let invalid = 64_437_u16;
     assert!(valid.valid_luhn());
     assert!(!invalid.valid_luhn());
 }
 
 #[test]
 fn you_can_validate_from_a_u32() {
-    let valid = 46_454_286u32;
-    let invalid = 46_454_287u32;
+    let valid = 46_454_286_u32;
+    let invalid = 46_454_287_u32;
     assert!(valid.valid_luhn());
     assert!(!invalid.valid_luhn());
 }
 
 #[test]
 fn you_can_validate_from_a_u64() {
-    let valid = 8273_1232_7352_0562u64;
-    let invalid = 8273_1232_7352_0569u64;
+    let valid = 8273_1232_7352_0562_u64;
+    let invalid = 8273_1232_7352_0569_u64;
     assert!(valid.valid_luhn());
     assert!(!invalid.valid_luhn());
 }
 
 #[test]
 fn you_can_validate_from_a_usize() {
-    let valid = 8273_1232_7352_0562usize;
-    let invalid = 8273_1232_7352_0569usize;
+    let valid = 8273_1232_7352_0562_usize;
+    let invalid = 8273_1232_7352_0569_usize;
     assert!(valid.valid_luhn());
     assert!(!invalid.valid_luhn());
 }

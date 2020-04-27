@@ -6,7 +6,7 @@ fn word_to_int<S: BuildHasher>(word: &str, h: &HashMap<char, u8, S>) -> Option<u
     if word.len() > 1 && h[&word.chars().next().unwrap()] == 0 {
         None
     } else {
-        Some(word.chars().fold(0, |a, c| a * 10 + h[&c] as u64))
+        Some(word.chars().fold(0, |a, c| a * 10 + u64::from(h[&c])))
     }
 }
 
@@ -29,8 +29,7 @@ impl<'a> Equation<'a> {
         let letters = left
             .iter()
             .chain(right.iter())
-            .map(|s| s.chars())
-            .flatten()
+            .flat_map(|s| s.chars())
             .unique()
             .collect();
 
@@ -48,9 +47,9 @@ impl<'a> Equation<'a> {
     }
 
     fn solve(&self) -> Option<HashMap<char, u8>> {
-        (0u8..10)
+        (0_u8..10)
             .permutations(self.letters.len())
-            .filter_map(|digits| {
+            .find_map(|digits| {
                 Some(
                     self.letters
                         .iter()
@@ -60,7 +59,6 @@ impl<'a> Equation<'a> {
                 )
                 .filter(|h| self.check(h))
             })
-            .next()
     }
 }
 

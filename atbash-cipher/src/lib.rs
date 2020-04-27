@@ -21,7 +21,7 @@ pub fn encode(plain: &str) -> String {
         .chars()
         .chunks(5)
         .into_iter()
-        .map(|c| c.collect::<String>())
+        .map(Iterator::collect::<String>)
         .join(" ")
 }
 

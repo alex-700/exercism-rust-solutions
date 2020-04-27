@@ -31,7 +31,7 @@ pub mod graph {
                 }
 
                 pub fn get_attr(&self, attr: &str) -> Option<&str> {
-                    self.attrs.get(attr).map(|s| s.as_str())
+                    self.attrs.get(attr).map(String::as_str)
                 }
             }
         }
@@ -61,7 +61,7 @@ pub mod graph {
                 }
 
                 pub fn get_attr(&self, attr: &str) -> Option<&str> {
-                    self.attrs.get(attr).map(|s| s.as_str())
+                    self.attrs.get(attr).map(String::as_str)
                 }
             }
         }
